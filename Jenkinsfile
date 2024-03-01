@@ -1,20 +1,12 @@
 pipeline {
     agent any
-    tools {
-        dockerTool 'docker'
-    }
-
     stages {
         stage('Deploy the App') {
             steps {
                 echo 'Deploy the App'
                 sh 'ls -l'
                 sh 'docker --version'
-                script {
-                    dockerComposeBuild(
-                        composeFile: 'docker-compose.yaml'
-                    )
-                }
+                sh 'docker-compose build' // Docker Compose ile projeyi oluştur
             }
         }
         stage('Destroy the infrastructure') {
@@ -22,11 +14,7 @@ pipeline {
                 timeout(time:5, unit:'DAYS') {
                     input message:'Approve terminate'
                 }
-                script {
-                    dockerComposeDown(
-                        composeFile: 'docker-compose.yaml'
-                    )
-                }
+                sh 'docker-compose down' // Docker Compose ile altyapıyı kaldır
             }
         }
     }
