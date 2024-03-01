@@ -11,8 +11,8 @@ services:
       POSTGRES_PASSWORD: "Pp123456789"
     networks:
       - mynet
-    volumes:
-      - my1vol:/var/lib/postgresql/data
+    # volumes:
+    #   - my1vol:/var/lib/postgresql/data
 
 
   server:
@@ -45,8 +45,8 @@ networks:
   mynet:
     driver: bridge
 
-volumes:
-  my1vol:
+# volumes:
+#   my1vol:
 
 # secrets:
 #   db_password:
