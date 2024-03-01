@@ -35,7 +35,7 @@ pipeline{
     post {
         success {
         script {
-        slackSend channel: '#class-chat', color: '#439FE0', message: 'Project-207 with ansible is ready and pipeline passed succesfully', teamDomain: 'devops15tr', tokenCredentialId: 'jenkins-slack'
+        slackSend channel: '#class-chat', color: '#439FE0', message: ' :100: Project-207 with jenkins :100:', teamDomain: 'devops15tr', tokenCredentialId: 'jenkins-slack'
             }
     }
     }  
